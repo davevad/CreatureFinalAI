@@ -305,6 +305,7 @@ string Trainer::makeMove(stringstream& situation) {
             elementWeak = element;
             //new comment to test commiting changes
             //*************************************
+            //more changes
         }
     }
     
