@@ -25,18 +25,21 @@ public:
     void setAttack(int attack);
     void setElemWeak(string elem);
     void setElemStren(string elem);
+    void setActiveEnemy(bool main);
+    string getElemWeak();
+    string getElemStren();
     string getElem();
     string getName();
     int getAttack();
     
 private:
     string element;
-    int maxHealth;
+    int maxHitPoints;
     int attackDmg;
-    string name;
+    string pokName;
     string elemWeak;
     string elemStren;
-    
+    bool activeEnemy;
 };
 
 

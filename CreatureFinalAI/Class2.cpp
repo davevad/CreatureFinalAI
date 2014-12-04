@@ -14,6 +14,9 @@ enemyCreature::enemyCreature(){
     setElem("none");
     setAttack(0);
     setName("none");
+    setElemWeak("none");
+    setElemStren("none");
+    setActiveEnemy(false);
 }
 enemyCreature::enemyCreature(string elem, int attack, string creatName)
 {
@@ -31,7 +34,7 @@ void enemyCreature::setAttack(int attack)
 }
 void enemyCreature::setName(string creatName)
 {
-    name = creatName;
+    pokName = creatName;
 }
 string enemyCreature::getElem()
 {
@@ -43,7 +46,15 @@ int enemyCreature::getAttack()
 }
 string enemyCreature::getName()
 {
-    return name;
+    return pokName;
+}
+string enemyCreature::getElemStren()
+{
+    return elemStren;
+}
+string enemyCreature::getElemWeak()
+{
+    return elemWeak;
 }
 void enemyCreature::setElemWeak(string elem)
 {
@@ -52,4 +63,8 @@ void enemyCreature::setElemWeak(string elem)
 void enemyCreature::setElemStren(string elem)
 {
     elemStren = elem;
+}
+void enemyCreature::setActiveEnemy(bool main)
+{
+    activeEnemy = main;
 }

@@ -17,22 +17,47 @@ ourCreatures::ourCreatures(int hp, int maxHp, string creatName)
     setMaxHp(maxHp);
 
 }
-ourCreatures::ourCreatures(){}
+ourCreatures::ourCreatures()
+{
+    setName("none");
+    setElemWeak("none");
+    setElemStren("none");
+    setElem("none");
+    setHp(0);
+    setMaxHp(0);
+
+}
 int ourCreatures::getHp()
 {
-    return health;
+    return hitPoints;
 }
 int ourCreatures::getMaxHp()
 {
-    return maxHealth;
+    return maxHitPoints;
+}
+int ourCreatures::getAttackDmg()
+{
+    return attackDmg;
 }
 string ourCreatures::getName()
 {
-    return name;
+    return pokeName;
 }
 bool ourCreatures::getMain()
 {
     return mainCreat;
+}
+string ourCreatures::getElemStren()
+{
+    return elemStren;
+}
+string ourCreatures::getElemWeak()
+{
+    return elemWeak;
+}
+string ourCreatures::getElem()
+{
+    return element;
 }
 void ourCreatures::setMain(bool main)
 {
@@ -40,15 +65,23 @@ void ourCreatures::setMain(bool main)
 }
 void ourCreatures::setHp(int hp)
 {
-    health = hp;
+    hitPoints = hp;
 }
 void ourCreatures::setMaxHp(int maxHp)
 {
-    maxHealth = maxHp;
+    maxHitPoints = maxHp;
 }
 void ourCreatures::setName(string creatName)
 {
-    name = creatName;
+    pokeName = creatName;
+}
+void ourCreatures::setAttackDmg(int attack)
+{
+    attackDmg = attack;
+}
+void ourCreatures::setElem(string elem)
+{
+    element = elem;
 }
 void ourCreatures::setElemWeak(string elem)
 {

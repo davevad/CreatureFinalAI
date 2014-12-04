@@ -23,10 +23,12 @@
 //#include "CreatureType.h"
 
 using namespace std;
-bool dex_1, dex_2, dex_3, dex_4, dex_5, dex_6, dex_7 = false;
-bool dex_8, dex_9, dex_10, dex_11, dex_12, dex_13, dex_14 = false;
-bool dex_15, dex_16, dex_17, dex_18, dex_19, dex_20, dex_21 = false;
-bool dex_22, dex_23, dex_24, dex_25, dex_26 = false;
+bool dex_1 = false, dex_2 = false, dex_3 = false, dex_4 = false, dex_5 = false;
+bool dex_6 = false, dex_7 = false, dex_8 = false, dex_9 = false, dex_10 = false;
+bool dex_11 = false, dex_12 = false, dex_13 = false, dex_14 = false;
+bool dex_15 = false, dex_16 = false, dex_17 = false, dex_18 = false;
+bool dex_19 = false, dex_20 = false, dex_21 = false, dex_22 = false;
+bool dex_23 = false, dex_24 = false, dex_25 = false, dex_26 = false;
 int recentDmg = 0;
 enemyCreature Axolotyl, Bittern, C_lacanth, Dugong, Echidna, Fossa, Guanaco,
     Honeybdgr, Ibex, Jackal, Kiwi, Loris, Megapode, Narwhal, Ovenbird, Pika, Quagga,
@@ -62,8 +64,16 @@ string Trainer::makeMove(stringstream& situation) {
         // Store each line in the string line
         string line = lines[i];
         // Store the first char of line in the char c
-        char c = line[0];
-        char mainC = line[6];
+        char c = '1';
+        if(line.size() >=1)
+        {
+            c = line[0];
+        }
+        char mainC = '1';
+        if(line.size() >= 7)
+        {
+            mainC = line[6];
+        }
         // If c is a pipe ('|'), then this is the line that tells us about our
         //    party and the health of each Creature we own.
         if (c == '|') {
@@ -212,6 +222,27 @@ string Trainer::makeMove(stringstream& situation) {
         ss >> junk >> attackD;
         char enemyChar = name[0];
         int baseAttack = attackD;
+        for(int i = 0; i < 4; i++)
+        {
+            if(ourTeam[i].getMain())
+            {
+                ourTeam[i].setElem(element);
+                if(attackD < 4)
+                {
+                    baseAttack = attackD*2;
+                    ourTeam[i].setAttackDmg(baseAttack);
+                }
+                else if(attackD > 6)
+                {
+                    baseAttack = attackD/2;
+                    ourTeam[i].setAttackDmg(baseAttack);
+                }
+                else
+                {
+                    ourTeam[i].setAttackDmg(baseAttack);
+                }
+            }
+        }
         if(attackD < 4)
         {
             baseAttack = attackD*2;
@@ -296,16 +327,105 @@ string Trainer::makeMove(stringstream& situation) {
                 case 'Z':
                     enemyTeam[25].setElemStren(element);
                     break;
+                default:
+                    break;
             }
-            
+            for(int i = 0; i < 4; i++)
+            {
+                if(ourTeam[i].getMain())
+                {
+                    ourTeam[i].setElem(element);
+                }
+            }
         }
         else if(attackD > 6)
         {
             baseAttack = attackD/2;
             elementWeak = element;
-            //new comment to test commiting changes
-            //*************************************
-            //more changes
+            switch(enemyChar)
+            {
+                case 'A':
+                    enemyTeam[0].setElemWeak(element);
+                    break;
+                case 'B':
+                    enemyTeam[1].setElemWeak(element);
+                    break;
+                case 'C':
+                    enemyTeam[2].setElemWeak(element);
+                    break;
+                case 'D':
+                    enemyTeam[3].setElemWeak(element);
+                    break;
+                case 'E':
+                    enemyTeam[4].setElemWeak(element);
+                    break;
+                case 'F':
+                    enemyTeam[5].setElemWeak(element);
+                    break;
+                case 'G':
+                    enemyTeam[6].setElemWeak(element);
+                    break;
+                case 'H':
+                    enemyTeam[7].setElemWeak(element);
+                    break;
+                case 'I':
+                    enemyTeam[8].setElemWeak(element);
+                    break;
+                case 'J':
+                    enemyTeam[9].setElemWeak(element);
+                    break;
+                case 'K':
+                    enemyTeam[10].setElemWeak(element);
+                    break;
+                case 'L':
+                    enemyTeam[11].setElemWeak(element);
+                    break;
+                case 'M':
+                    enemyTeam[12].setElemWeak(element);
+                    break;
+                case 'N':
+                    enemyTeam[13].setElemWeak(element);
+                    break;
+                case 'O':
+                    enemyTeam[14].setElemWeak(element);
+                    break;
+                case 'P':
+                    enemyTeam[15].setElemWeak(element);
+                    break;
+                case 'Q':
+                    enemyTeam[16].setElemWeak(element);
+                    break;
+                case 'R':
+                    enemyTeam[17].setElemWeak(element);
+                    break;
+                case 'S':
+                    enemyTeam[18].setElemWeak(element);
+                    break;
+                case 'T':
+                    enemyTeam[19].setElemWeak(element);
+                    break;
+                case 'U':
+                    enemyTeam[20].setElemWeak(element);
+                    break;
+                case 'V':
+                    enemyTeam[21].setElemWeak(element);
+                    break;
+                case 'W':
+                    enemyTeam[22].setElemWeak(element);
+                    break;
+                case 'X':
+                    enemyTeam[23].setElemWeak(element);
+                    break;
+                case 'Y':
+                    enemyTeam[24].setElemWeak(element);
+                    break;
+                case 'Z':
+                    enemyTeam[25].setElemWeak(element);
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
     
@@ -313,7 +433,7 @@ string Trainer::makeMove(stringstream& situation) {
     
     
     
-    if(enemyLine != -1)
+    if(enemyLine  != -1)
     {
         stringstream ss;
         ss << lines[enemyLine];
@@ -571,41 +691,26 @@ string Trainer::makeMove(stringstream& situation) {
      */
     string response;
 
+    //response = trainerDecide();
+    for(int i = 0; i < 26; i++)
+    {
+        cout << enemyTeam[i].getName() << ": elem: ";
+        cout << enemyTeam[i].getElem() << " elemStren: ";
+        cout << enemyTeam[i].getElemStren() << " elemWeak: ";
+        cout << enemyTeam[i].getElemWeak() << " attack: ";
+        cout << enemyTeam[i].getAttack() << endl;
+    }
     for(int i = 0; i < 4; i++)
     {
-        switch (i) {
-            case 0:
-                if(creature1.getMain())
-                {
-                    cout << "main: " << creature1.getName();
-                }
-                break;
-            case 1:
-                if(creature2.getMain())
-                {
-                    cout << "main: " << creature2.getName();
-                }
-                break;
-            case 2:
-                if(creature3.getMain())
-                {
-                    cout << "main: " << creature3.getName();
-                }
-                break;
-            case 3:
-                if(creature4.getMain())
-                {
-                    cout << "main: " << creature4.getName();
-                }
-                break;
-            default:
-                break;
-        }
+        cout << ourTeam[i].getName() << ": elem: ";
+        cout << ourTeam[i].getElem() << " elemStren: ";
+        cout << ourTeam[i].getElemStren() << " elemWeak: ";
+        cout << ourTeam[i].getElemWeak() << " attack: ";
+        cout << ourTeam[i].getAttackDmg()<< endl;
     }
-    response = trainerDecide();
-        
-
+    cin >> response;
     return response;
+    
 }
 
 
@@ -639,7 +744,9 @@ vector<string> Trainer::splitString(string inString, string splitOn) {
 }
 string Trainer::trainerDecide()
 {
-    int healthiest = getHealthiest();
+
+    int healthiest = 0;
+    healthiest = getHealthiest();
     if(ourTeam[0].getName()[0] == '*')
     {
         if(ourTeam[0].getHp()<=recentDmg)

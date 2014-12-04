@@ -23,20 +23,30 @@ public:
     void setHp(int hp);
     void setMaxHp(int maxHp);
     void setName(string creatName);
+    void setElem(string elem);
     void setElemWeak(string elem);
     void setElemStren(string elem);
+    void setMain(bool main);
+    void setAttackDmg(int attack);
+    string getElemStren();
+    string getElemWeak();
+    string getElem();
+    int getAttackDmg();
     int getHp();
     int getMaxHp();
     string getName();
-    void setMain(bool main);
     bool getMain();
+
+
     
 private:
-    int health;
-    int maxHealth;
+    int hitPoints;
+    int maxHitPoints;
+    int attackDmg;
+    string element;
     string elemWeak;
     string elemStren;
-    string name;
+    string pokeName;
     bool mainCreat;
 };
 
